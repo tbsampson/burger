@@ -4,22 +4,22 @@ var burgermodel = { // It's CRUD time...
 	create: function (column, values, cb) {  // ------------------------------------------------------- C
 		orm.create('burgers',column,values, function (res) {
 			cb(res);
-			console.log("(C)CREATE ok")
+			console.log("(C)REATE ok")
 		});
 	},
-    all: function (cb) {     
-		orm.all('burgers', function (res) {  // ------------------------------------------------------- R
+    read: function (cb) {     
+		orm.read('burgers', function (res) {  // ------------------------------------------------------- R
 			cb(res);
-			console.log("(R)ALL ok")
+			console.log("(R)EAD ok")
 		});
 	},
-	update: function (column, newValue, condition, cb) {  // ------------------------------------------ U
+	update: function (column, newValue, condition, cb) {  // ------------------------------------------- U
 		orm.update('burgers', column, newValue, condition, function (res) {
 			cb(res);
 			console.log("(U)UPDATE ok")
 		});
 	},
-	delete: function (condition, cb) {  // ------------------------------------------------------------ D
+	delete: function (condition, cb) {  // ------------------------------------------------------------- D
 		orm.delete('burgers',condition, function (res) {
 			cb(res);
 			console.log("(D)DELELTE ok")
