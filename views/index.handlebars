@@ -1,64 +1,26 @@
-<div class="header">
-</div>
-
-<div class="main">
-
-  <img src="../assets/img/burger.png" alt="Some random burger image"/>
-
-  <h1 data-text="Eat-Da-Burger!">Eat-Da-Burger!</h1>
-</div>
-
-<div class="split_view">
-
-  <div class="left_side">
-  {{#each burgers}}
-    {{#unless this.devoured}}
-    <div class="burger">
-      <div class="order">
-        {{this.burger_name}}
-      </div>
-      <div>
-        <form action="/{{this.id}}?_method=PUT" method="POST">
-          <input type="hidden" name="devoured" value="true">
-          <button type="submit" class="devour">
-            Devour it!
-          </button>
-        </form>
-      </div>
-    </div>
-    {{/unless}}
-  {{/each}}
-  </div>
-
-  <div class="right_side">
-  {{#each burgers}}
-    {{#if this.devoured}}
-    <div class="devoured-burgers">
-      <div class="order">
-        {{this.id}}
-        {{this.burger_name}}
-          <form action="/{{this.id}}?_method=PUT" method="POST">
-            <input type="hidden" name="devoured" value="false">
-            <button type="submit" class="order-again">
-              Create it!
-            </button>
-          </form>
-      </div>
-    </div>
-    {{/if}}
-  {{/each}}
-  </div>
-</div>
-
-<div class="main">
-  <form class="create-update-form" action="/" method="POST">
-    <div class="form-group">
-      <input type="text" id="ca" name="name" placeholder="Your next creation" required/>
-    </div>
-    <button type="submit" id="order">
-      Create Burger
-    </button>
+<h1>Order a Custom Burger!</h1>
+<img src="https://78.media.tumblr.com/b539237502af995c60a1e07c61b4ed4f/tumblr_p5wa1fJiuL1qdt6e2o1_1280.jpg">
+<center>
+  <form class="order-form">
+      <input type="text" id="input" name="burger_name">
+      <button class="btn sm" type="submit">Submit</button>
   </form>
-      <p>Submit the name of your next burger!</p>
-   <div class="line"></div>
+</center>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <h2 id="devour"> Eat-Da-Burger!</h2>
+      <h2 id="devoured"> Consumed Burgers</h2>
+    </div>
+  </div>
 </div>
+
+<ul class="before">
+  {{#each burgers}} {{#unless devoured}} {{> burgers/burger-block devoured=true}} {{/unless}} {{/each}}
+</ul>
+
+<ul class="eaten">
+  {{#each burgers}} {{#if devoured}} {{> burgers/burger-block devoured=false}} {{/if}} {{/each}}
+</ul>

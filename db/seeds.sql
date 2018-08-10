@@ -1,4 +1,5 @@
-USE burgers_db;
-
-INSERT INTO burgers (burger_name)
-VALUES ("Cheese Glory"), ("Mushroom Chaos"), ("Beethoven's Last");
+INSERT INTO burgers (burger_name, devoured)
+VALUES   ("Tuna Burger", TRUE)
+        ,("Jalapeno Extreme Burger", TRUE)
+        ,("Burger Extraorinaire", FALSE);
+ 

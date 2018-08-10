@@ -1,27 +1,25 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
-
+var express = require("express");
 var app = express();
 
-app.use(express.static(process.cwd() + '/public'));
-app.use(bodyParser.urlencoded({
-	extended: false
-}));
+app.use(express.static("public"));
 
-// override allows user to delete the burgers - hide the evidence :)
-app.use(methodOverride('_method'));
-var exphbs = require('express-handlebars');
-app.engine('handlebars', exphbs({
-	defaultLayout: 'main'
-}));
-app.set('view engine', 'handlebars');
 
-var routes = require('./controllers/burgers_controller.js');
-app.use('/', routes);
+// var methodOverride = require("method-override"); was goning to use this to delete the burgers, but did not get around to it
 
-app.set('port', (process.env.PORT || 3000)); // need this to work with heroku
+var bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.listen(app.get('port'), function () {
-	console.log('App listening on PORT ', app.get('port'));
-});
+var port = process.env.PORT || 3000; // set for heroku
+
+
+
+var exphbs = require("express-handlebars");
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+var routes = require("./controllers/burgers_controller.js");
+
+
+app.use("/", routes);// home page
+app.listen(port, function () {
+    console.log("App listening on PORT " + port);
+  });
