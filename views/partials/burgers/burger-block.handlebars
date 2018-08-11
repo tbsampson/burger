@@ -1,6 +1,6 @@
 <h3>
-	{{name}}
-	{{#if devour}}
-		<button class="change-devour" data-id="{{id}}" data-newdevour="{{devour}}">Devour!</button>
-	{{/if}}
+	{{burger_name}}
+	{{#unless devoured}}
+		<button class="change-devour" data-id="{{id}}" data-newdevour="{{devoured}}">Devour!</button>
+	{{/unless}}
 </h3>

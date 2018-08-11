@@ -18,11 +18,12 @@ $(function() {
   });
 
   $(".order-form").on("submit", function(event) {
-    event.preventDefault();
+    event.preventDefault(); //prevent refresh
     var newBurger = {
       name: $("#input").val().trim(),
       devoured: 0
     };
+    console.log(newBurger);
 
     $.ajax("/api/burgers", { // ------------------------------------------ POST
       type: "POST",
@@ -30,7 +31,7 @@ $(function() {
     }).then(
       function() {
         console.log("created new burger");
-        location.reload();
+        //location.reload();
       }
     );
   });
